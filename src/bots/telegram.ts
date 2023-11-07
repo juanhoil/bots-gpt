@@ -37,7 +37,7 @@ export class TelegramBot {
 
       if (message.includes("static/photos")) {
         ctx.replyWithPhoto({ source: message }).then(()=>{
-          //deleteDownloadFile(message)
+          deleteDownloadFile(message)
         });
       }else{
         ctx.reply(message || 'algo saio mal!', { reply_to_message_id: ctx.message.message_id });
