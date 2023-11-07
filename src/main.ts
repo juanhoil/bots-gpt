@@ -9,5 +9,5 @@ if (TELEGRAM_BOT_TOKEN){
   telegramBot.start();
 }
 
-const whatsappBot = new WhatsappBot()
-whatsappBot.start();
+/*const whatsappBot = new WhatsappBot()
+whatsappBot.start();]*/

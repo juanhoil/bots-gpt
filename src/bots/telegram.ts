@@ -32,11 +32,12 @@ export class TelegramBot {
       const text = ctx.message?.text.trim();
       const id = ctx.from?.id;
       console.log('voice', ctx.from);
+      console.log('question', text)
       const message = await processText(text)
 
       if (message.includes("static/photos")) {
         ctx.replyWithPhoto({ source: message }).then(()=>{
-          deleteDownloadFile(message)
+          //deleteDownloadFile(message)
         });
       }else{
         ctx.reply(message || 'algo saio mal!', { reply_to_message_id: ctx.message.message_id });
