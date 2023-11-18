@@ -36,6 +36,7 @@ export class TelegramBot {
       const message = await processText(text)
 
       if (message.includes("static/photos")) {
+        ctx.telegram.sendMessage(ctx.message.chat.id, 'Procesando foto...');
         ctx.replyWithPhoto({ source: message }).then(()=>{
           deleteDownloadFile(message)
         });
@@ -66,6 +67,7 @@ export class TelegramBot {
         const text = await getTranscription(filePath ,'es')
         
         if (text.includes("static/photos")) {
+          ctx.telegram.sendMessage(ctx.message.chat.id, 'Procesando foto...');
           ctx.replyWithPhoto({ source: text }).then(()=>{
             deleteDownloadFile(text)
           });

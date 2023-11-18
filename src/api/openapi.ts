@@ -161,10 +161,12 @@ export const isTranslator = (texto: string): boolean => {
 }
 
 export const createAndUpFileAssistant = async () => {
+  const downloadsPath = path.resolve('./static/docs/mydata.csv');
   const file = await openai.files.create({
-    file: fs.createReadStream("mydata.csv"),
+    file: fs.createReadStream(downloadsPath),
     purpose: "assistants",
   });
+  console.log('file',file)
   const assistant = await openai.beta.assistants.create({
     name: "Data visualizer",
     description: "You are great at creating beautiful data visualizations. You analyze data present in .csv files, understand trends, and come up with data visualizations relevant to those trends. You also share a brief text summary of the trends observed.",
@@ -172,4 +174,6 @@ export const createAndUpFileAssistant = async () => {
     tools: [{"type": "code_interpreter"}],
     file_ids: [file.id]
   });
+
+  console.log('assistant',assistant)
 }
